@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+
+  <Properties>
+    <Property name="logPattern" value="%d %p %c{1.} [%t] %m%n" />
+    <Property name="logFileDirectory" value="${log-directory:-target/logs}" />
+    <Property name="logFileSizeThreshold" value="100M" />
+    <Property name="logFileRolloverThreshold" value="5" />
+  </Properties>
+
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${logPattern}" />
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <AsyncLogger name="io.honestnode" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </AsyncLogger>
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
